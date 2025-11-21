@@ -15,7 +15,18 @@ const app = express();
 
 //middlewares
 app.use(express.json());
-app.use(cors());
+
+app.use(
+  cors({
+    origin: [
+      "http://localhost:3000",
+      "https://bloodbankfrontend-two.vercel.app"
+    ],
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    credentials: true,
+  })
+);
+
 app.use(morgan("dev"));
 
 //routes
